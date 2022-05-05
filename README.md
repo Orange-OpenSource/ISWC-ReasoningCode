@@ -4,7 +4,8 @@ Dependencies inference
 
 This code implements a semantic-based approach to infer IoT dependencies between devices. It evaluates the performance of the two processes: Dependencies Inference and Entity resoultion. Furthermore, it present a comparison between SHACL and SWRL for dependencies inference.
 
-
+## Evaluation Results
+[Numerical Evaluation results presented in the qualtitative evaluation ](https://github.com/Orange-OpenSource/ISWC-ReasoningCode/blob/master/EvaluationResults.xlsx)
 ## License
  
  
