@@ -22,5 +22,5 @@ Managed by Maven see [pom.xml](https://gitlab.tech.orange/device-management-a-r/
         
     
 ## Contact
- * e-mail: amal.guittoum@orange.com _{or any other mean (bug tracker, forum etc.) to contact support}_
+ * e-mail: amal.guittoum@orange.com
 
