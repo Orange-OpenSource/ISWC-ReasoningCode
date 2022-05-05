@@ -1,0 +1,778 @@
+<?xml version="1.0"?>
+ <!--
+   Software Name : Dependencies inference
+   Version: 0.0
+   SPDX-FileCopyrightText: Copyright (c) 2022[-2022] Orange
+   SPDX-License-Identifier: AGPL-3.0-only
+
+   This software is distributed under the GNU Affero General Public License v3.0 only,
+   the text of which is available at https://spdx.org/licenses/AGPL-3.0-only.html
+   or see the "license.txt" file for more details.
+
+   Author: Amal GUITTOUM
+   Software description: Dependencies inference in smart home scenarios
+  -->
+<rdf:RDF xmlns="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#"
+     xml:base="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD"
+     xmlns:dk="http://www.data-knowledge.org/dk/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:core="https://saref.etsi.org/core/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+     xmlns:vann="http://purl.org/vocab/vann/"
+     xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#"
+     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+     xmlns:eupont="http://elite.polito.it/ontologies/eupont.owl#">
+         <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Rules
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+       <rdf:Description rdf:about="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#d1">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#d2">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#s">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#s2">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#r">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#ap">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#a">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#t">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#s1">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#a1">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#a2">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#df">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#x">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#y">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#z">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#f">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#p">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This rule allows inference of state based dependencies generated by IoT application</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ApplicationDependenciesbasedOnState</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#IoTDevice"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#d1"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#IoTDevice"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#d2"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                        <swrl:classPredicate rdf:resource="https://saref.etsi.org/core/State"/>
+                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#s"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                        <rdf:first>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                <swrl:propertyPredicate rdf:resource="https://saref.etsi.org/core/hasState"/>
+                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#d1"/>
+                                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#s"/>
+                                            </rdf:Description>
+                                        </rdf:first>
+                                        <rdf:rest>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                <rdf:first>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                                        <swrl:classPredicate rdf:resource="https://saref.etsi.org/core/Service"/>
+                                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#s2"/>
+                                                    </rdf:Description>
+                                                </rdf:first>
+                                                <rdf:rest>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                        <rdf:first>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                                <swrl:propertyPredicate rdf:resource="https://saref.etsi.org/core/offers"/>
+                                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#d2"/>
+                                                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#s2"/>
+                                                            </rdf:Description>
+                                                        </rdf:first>
+                                                        <rdf:rest>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                                <rdf:first>
+                                                                    <rdf:Description>
+                                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                                                        <swrl:classPredicate rdf:resource="http://elite.polito.it/ontologies/eupont.owl#Rule"/>
+                                                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#r"/>
+                                                                    </rdf:Description>
+                                                                </rdf:first>
+                                                                <rdf:rest>
+                                                                    <rdf:Description>
+                                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                                        <rdf:first>
+                                                                            <rdf:Description>
+                                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#hasRule"/>
+                                                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#ap"/>
+                                                                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#r"/>
+                                                                            </rdf:Description>
+                                                                        </rdf:first>
+                                                                        <rdf:rest>
+                                                                            <rdf:Description>
+                                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                                                <rdf:first>
+                                                                                    <rdf:Description>
+                                                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                                                                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#Action"/>
+                                                                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#a"/>
+                                                                                    </rdf:Description>
+                                                                                </rdf:first>
+                                                                                <rdf:rest>
+                                                                                    <rdf:Description>
+                                                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                                                        <rdf:first>
+                                                                                            <rdf:Description>
+                                                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                                                                                <swrl:classPredicate rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#Trigger"/>
+                                                                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#t"/>
+                                                                                            </rdf:Description>
+                                                                                        </rdf:first>
+                                                                                        <rdf:rest>
+                                                                                            <rdf:Description>
+                                                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                                                                <rdf:first>
+                                                                                                    <rdf:Description>
+                                                                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                                                                        <swrl:propertyPredicate rdf:resource="http://elite.polito.it/ontologies/eupont.owl#hasAction"/>
+                                                                                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#r"/>
+                                                                                                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#a"/>
+                                                                                                    </rdf:Description>
+                                                                                                </rdf:first>
+                                                                                                <rdf:rest>
+                                                                                                    <rdf:Description>
+                                                                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                                                                        <rdf:first>
+                                                                                                            <rdf:Description>
+                                                                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                                                                                <swrl:propertyPredicate rdf:resource="http://elite.polito.it/ontologies/eupont.owl#hasTrigger"/>
+                                                                                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#r"/>
+                                                                                                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#t"/>
+                                                                                                            </rdf:Description>
+                                                                                                        </rdf:first>
+                                                                                                        <rdf:rest>
+                                                                                                            <rdf:Description>
+                                                                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                                                                                <rdf:first>
+                                                                                                                    <rdf:Description>
+                                                                                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                                                                                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#allowsAction"/>
+                                                                                                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#s2"/>
+                                                                                                                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#a"/>
+                                                                                                                    </rdf:Description>
+                                                                                                                </rdf:first>
+                                                                                                                <rdf:rest>
+                                                                                                                    <rdf:Description>
+                                                                                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                                                                                        <rdf:first>
+                                                                                                                            <rdf:Description>
+                                                                                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                                                                                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#relatedTo"/>
+                                                                                                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#t"/>
+                                                                                                                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#s"/>
+                                                                                                                            </rdf:Description>
+                                                                                                                        </rdf:first>
+                                                                                                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                                                                                    </rdf:Description>
+                                                                                                                </rdf:rest>
+                                                                                                            </rdf:Description>
+                                                                                                        </rdf:rest>
+                                                                                                    </rdf:Description>
+                                                                                                </rdf:rest>
+                                                                                            </rdf:Description>
+                                                                                        </rdf:rest>
+                                                                                    </rdf:Description>
+                                                                                </rdf:rest>
+                                                                            </rdf:Description>
+                                                                        </rdf:rest>
+                                                                    </rdf:Description>
+                                                                </rdf:rest>
+                                                            </rdf:Description>
+                                                        </rdf:rest>
+                                                    </rdf:Description>
+                                                </rdf:rest>
+                                            </rdf:Description>
+                                        </rdf:rest>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#hasStateDependencyTo"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#d2"/>
+                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#d1"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This rule allows inference of dependencies among IoT device through environment</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EnvDependency</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="https://saref.etsi.org/core/Actuator"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#d1"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="https://saref.etsi.org/core/Sensor"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#d2"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                        <swrl:classPredicate rdf:resource="https://saref.etsi.org/core/FeatureOfInterest"/>
+                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#f"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                        <rdf:first>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                                <swrl:classPredicate rdf:resource="https://saref.etsi.org/core/Property"/>
+                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#p"/>
+                                            </rdf:Description>
+                                        </rdf:first>
+                                        <rdf:rest>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                <rdf:first>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                        <swrl:propertyPredicate rdf:resource="https://saref.etsi.org/core/hasProperty"/>
+                                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#f"/>
+                                                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#p"/>
+                                                    </rdf:Description>
+                                                </rdf:first>
+                                                <rdf:rest>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                        <rdf:first>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                                <swrl:propertyPredicate rdf:resource="https://saref.etsi.org/core/measuresProperty"/>
+                                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#d2"/>
+                                                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#p"/>
+                                                            </rdf:Description>
+                                                        </rdf:first>
+                                                        <rdf:rest>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                                <rdf:first>
+                                                                    <rdf:Description>
+                                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#changesProperty"/>
+                                                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#d1"/>
+                                                                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#p"/>
+                                                                    </rdf:Description>
+                                                                </rdf:first>
+                                                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                            </rdf:Description>
+                                                        </rdf:rest>
+                                                    </rdf:Description>
+                                                </rdf:rest>
+                                            </rdf:Description>
+                                        </rdf:rest>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#hasEnvironmentDependencyTo"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#d2"/>
+                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#d1"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ApplicationDependenciesbasedOnDataExchange</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#IoTDevice"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#d1"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#IoTDevice"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#d2"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                        <swrl:classPredicate rdf:resource="https://saref.etsi.org/core/Service"/>
+                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#s1"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                        <rdf:first>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                                <swrl:classPredicate rdf:resource="https://saref.etsi.org/core/Service"/>
+                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#s2"/>
+                                            </rdf:Description>
+                                        </rdf:first>
+                                        <rdf:rest>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                <rdf:first>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                        <swrl:propertyPredicate rdf:resource="https://saref.etsi.org/core/offers"/>
+                                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#d1"/>
+                                                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#s1"/>
+                                                    </rdf:Description>
+                                                </rdf:first>
+                                                <rdf:rest>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                        <rdf:first>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                                <swrl:propertyPredicate rdf:resource="https://saref.etsi.org/core/offers"/>
+                                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#d2"/>
+                                                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#s2"/>
+                                                            </rdf:Description>
+                                                        </rdf:first>
+                                                        <rdf:rest>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                                <rdf:first>
+                                                                    <rdf:Description>
+                                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                                                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#Action"/>
+                                                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#a1"/>
+                                                                    </rdf:Description>
+                                                                </rdf:first>
+                                                                <rdf:rest>
+                                                                    <rdf:Description>
+                                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                                        <rdf:first>
+                                                                            <rdf:Description>
+                                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                                                                <swrl:classPredicate rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#Action"/>
+                                                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#a2"/>
+                                                                            </rdf:Description>
+                                                                        </rdf:first>
+                                                                        <rdf:rest>
+                                                                            <rdf:Description>
+                                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                                                <rdf:first>
+                                                                                    <rdf:Description>
+                                                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                                                                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#Application"/>
+                                                                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#ap"/>
+                                                                                    </rdf:Description>
+                                                                                </rdf:first>
+                                                                                <rdf:rest>
+                                                                                    <rdf:Description>
+                                                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                                                        <rdf:first>
+                                                                                            <rdf:Description>
+                                                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                                                                <swrl:propertyPredicate rdf:resource="http://elite.polito.it/ontologies/eupont.owl#hasAction"/>
+                                                                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#ap"/>
+                                                                                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#a1"/>
+                                                                                            </rdf:Description>
+                                                                                        </rdf:first>
+                                                                                        <rdf:rest>
+                                                                                            <rdf:Description>
+                                                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                                                                <rdf:first>
+                                                                                                    <rdf:Description>
+                                                                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                                                                        <swrl:propertyPredicate rdf:resource="http://elite.polito.it/ontologies/eupont.owl#hasAction"/>
+                                                                                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#ap"/>
+                                                                                                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#a2"/>
+                                                                                                    </rdf:Description>
+                                                                                                </rdf:first>
+                                                                                                <rdf:rest>
+                                                                                                    <rdf:Description>
+                                                                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                                                                        <rdf:first>
+                                                                                                            <rdf:Description>
+                                                                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                                                                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#allowsAction"/>
+                                                                                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#s1"/>
+                                                                                                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#a1"/>
+                                                                                                            </rdf:Description>
+                                                                                                        </rdf:first>
+                                                                                                        <rdf:rest>
+                                                                                                            <rdf:Description>
+                                                                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                                                                                <rdf:first>
+                                                                                                                    <rdf:Description>
+                                                                                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                                                                                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#allowsAction"/>
+                                                                                                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#s2"/>
+                                                                                                                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#a2"/>
+                                                                                                                    </rdf:Description>
+                                                                                                                </rdf:first>
+                                                                                                                <rdf:rest>
+                                                                                                                    <rdf:Description>
+                                                                                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                                                                                        <rdf:first>
+                                                                                                                            <rdf:Description>
+                                                                                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                                                                                                                <swrl:classPredicate rdf:resource="http://www.data-knowledge.org/dk/DataFlow"/>
+                                                                                                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#df"/>
+                                                                                                                            </rdf:Description>
+                                                                                                                        </rdf:first>
+                                                                                                                        <rdf:rest>
+                                                                                                                            <rdf:Description>
+                                                                                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                                                                                                <rdf:first>
+                                                                                                                                    <rdf:Description>
+                                                                                                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                                                                                                        <swrl:propertyPredicate rdf:resource="http://www.data-knowledge.org/dk/flowsFrom"/>
+                                                                                                                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#df"/>
+                                                                                                                                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#a1"/>
+                                                                                                                                    </rdf:Description>
+                                                                                                                                </rdf:first>
+                                                                                                                                <rdf:rest>
+                                                                                                                                    <rdf:Description>
+                                                                                                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                                                                                                        <rdf:first>
+                                                                                                                                            <rdf:Description>
+                                                                                                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                                                                                                                <swrl:propertyPredicate rdf:resource="http://www.data-knowledge.org/dk/flowsTo"/>
+                                                                                                                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#df"/>
+                                                                                                                                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#a2"/>
+                                                                                                                                            </rdf:Description>
+                                                                                                                                        </rdf:first>
+                                                                                                                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                                                                                                    </rdf:Description>
+                                                                                                                                </rdf:rest>
+                                                                                                                            </rdf:Description>
+                                                                                                                        </rdf:rest>
+                                                                                                                    </rdf:Description>
+                                                                                                                </rdf:rest>
+                                                                                                            </rdf:Description>
+                                                                                                        </rdf:rest>
+                                                                                                    </rdf:Description>
+                                                                                                </rdf:rest>
+                                                                                            </rdf:Description>
+                                                                                        </rdf:rest>
+                                                                                    </rdf:Description>
+                                                                                </rdf:rest>
+                                                                            </rdf:Description>
+                                                                        </rdf:rest>
+                                                                    </rdf:Description>
+                                                                </rdf:rest>
+                                                            </rdf:Description>
+                                                        </rdf:rest>
+                                                    </rdf:Description>
+                                                </rdf:rest>
+                                            </rdf:Description>
+                                        </rdf:rest>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#hasApplicationDataDependency"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#d2"/>
+                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#d1"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This rule allows connectivity dependencies inference among devices</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConnectivityDependency</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#ConnectivityDevice"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#x"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="https://saref.etsi.org/core/Device"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#y"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#ConnectivityService"/>
+                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#z"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                        <rdf:first>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                <swrl:propertyPredicate rdf:resource="https://saref.etsi.org/core/offers"/>
+                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#x"/>
+                                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#z"/>
+                                            </rdf:Description>
+                                        </rdf:first>
+                                        <rdf:rest>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                <rdf:first>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#consumes"/>
+                                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#y"/>
+                                                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#z"/>
+                                                    </rdf:Description>
+                                                </rdf:first>
+                                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                            </rdf:Description>
+                                        </rdf:rest>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#hasConnectivityDependency"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#y"/>
+                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#x"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This rule allows service dependencies inference among devices</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">serviceDependency</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#IoTDevice"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#x"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#IoTDevice"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#y"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                        <swrl:classPredicate rdf:resource="https://saref.etsi.org/core/Service"/>
+                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#z"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                        <rdf:first>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                <swrl:propertyPredicate rdf:resource="https://saref.etsi.org/core/offers"/>
+                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#x"/>
+                                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#z"/>
+                                            </rdf:Description>
+                                        </rdf:first>
+                                        <rdf:rest>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                <rdf:first>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#consumes"/>
+                                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#y"/>
+                                                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#z"/>
+                                                    </rdf:Description>
+                                                </rdf:first>
+                                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                            </rdf:Description>
+                                        </rdf:rest>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#hasServiceDependencyTo"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#y"/>
+                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#x"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+</rdf:RDF>

@@ -1,0 +1,59 @@
+# Software Name : Dependencies inference
+ # Version: 0.0
+ # SPDX-FileCopyrightText: Copyright (c) 2022[-2022] Orange
+ # SPDX-License-Identifier: AGPL-3.0-only
+ #
+ # This software is distributed under the GNU Affero General Public License v3.0 only,
+ # the text of which is available at https://spdx.org/licenses/AGPL-3.0-only.html
+ # or see the "license.txt" file for more details.
+ #
+ # Author: Amal GUITTOUM
+ # Software description: Dependencies inference in smart home scenarios
+@prefix dp: <http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#> .
+@prefix dk: <http://www.data-knowledge.org/dk/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix core: <https://saref.etsi.org/core/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix eupont: <http://elite.polito.it/ontologies/eupont.owl#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@base <http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD> .
+
+
+dp:ApplicationDataDependency
+  rdf:type sh:NodeShape ;
+  sh:targetClass dp:IoTDevice ;
+
+  sh:rule [
+      rdf:type sh:SPARQLRule ;
+
+      sh:construct """
+			CONSTRUCT {
+            				$this <http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#hasApplicationDataDependency> ?device .
+            			}
+            			WHERE {
+            			    ?device a  <http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#IoTDevice> .
+            			    ?deviceSim a  <http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#IoTDevice> .
+            			    ?device2Sim a  <http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#IoTDevice> .
+
+            			    ?deviceSim <https://saref.etsi.org/core/offers> ?service1 .
+            			    ?device2Sim <https://saref.etsi.org/core/offers> ?service2 .
+            			    ?service1 <http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#allowsAction> ?action1 .
+            			    ?service2 <http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#allowsAction> ?action2 .
+            			    ?dataFlow <http://www.data-knowledge.org/dk/flowsFrom> ?action1 .
+            			    ?dataFlow <http://www.data-knowledge.org/dk/flowsTo> ?action2 .
+            			    ?deviceSim <http://www.w3.org/2002/07/owl#sameAs> ?device.
+                            ?device2Sim <http://www.w3.org/2002/07/owl#sameAs> $this.
+
+            			}
+
+			""" ;
+
+    ] ;
+
+
+
+.

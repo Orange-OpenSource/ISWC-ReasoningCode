@@ -1,0 +1,670 @@
+ # Software Name : Dependencies inference
+ # Version: 0.0
+ # SPDX-FileCopyrightText: Copyright (c) 2022[-2022] Orange
+ # SPDX-License-Identifier: AGPL-3.0-only
+ #
+ # This software is distributed under the GNU Affero General Public License v3.0 only,
+ # the text of which is available at https://spdx.org/licenses/AGPL-3.0-only.html
+ # or see the "license.txt" file for more details.
+ #
+ # Author: Amal GUITTOUM
+ # Software description: Dependencies inference in smart home scenarios
+@prefix dp: <http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD#> .
+@prefix dk: <http://www.data-knowledge.org/dk/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix core: <https://saref.etsi.org/core/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix eupont: <http://elite.polito.it/ontologies/eupont.owl#> .
+@base <http://www.semanticweb.org/OrangeLab/ontologies/2021/9/IoTD> .
+dp:AC-Off rdf:type owl:NamedIndividual ,
+dp:Trigger ;
+dp:relatedTo dp:ACoff .
+dp:ACOn rdf:type owl:NamedIndividual ,
+core:OnState .
+dp:ACoff rdf:type owl:NamedIndividual ,
+core:OffState .
+dp:AdjustTemp rdf:type owl:NamedIndividual ,
+core:Service ;
+dp:allowsAction dp:adjustTemp .
+dp:AirConditionner rdf:type owl:NamedIndividual ,
+dp:IoTDevice ,
+core:Actuator ,
+core:Device ;
+dp:changesProperty dp:TemperatureRoom ;
+dp:consumes dp:ConnectivityGateway ;
+core:hasState dp:ACOn ,
+dp:ACoff ;
+core:offers dp:AdjustTemp ,
+dp:SwitchOnOffAC .
+dp:Alarm rdf:type owl:NamedIndividual ,
+dp:IoTDevice ,
+dp:Processor ;
+dp:consumes dp:ConnectvityWIFIRepeater ,
+dp:DetectSmoke ,
+dp:MeasureTemp ;
+core:hasState dp:fireAlarm ,
+dp:securityAlarm ;
+core:offers dp:MonitorSecurity .
+dp:ChangeBrightness1 rdf:type owl:NamedIndividual ,
+core:Service .
+dp:ChangeBrightness2 rdf:type owl:NamedIndividual ,
+core:Service .
+dp:ChangeLightColor1 rdf:type owl:NamedIndividual ,
+core:Service ;
+dp:allowsAction dp:setColorBulb1Red .
+dp:ChangeLightColor2 rdf:type owl:NamedIndividual ,
+core:Service ;
+dp:allowsAction dp:setColorBulb2Red .
+dp:ConnectivityGateway rdf:type owl:NamedIndividual ,
+dp:ConnectivityService .
+dp:ConnectvityWIFIRepeater rdf:type owl:NamedIndividual ,
+dp:ConnectivityService .
+dp:ConrolsLight rdf:type owl:NamedIndividual ,
+core:Service .
+dp:DetectPresence1 rdf:type owl:NamedIndividual ,
+core:Service .
+dp:DetectPresence2 rdf:type owl:NamedIndividual ,
+core:Service .
+dp:DetectSmoke rdf:type owl:NamedIndividual ,
+core:Service .
+dp:Gateway rdf:type owl:NamedIndividual ,
+dp:ConnectivityDevice ,
+core:Device ;
+core:offers dp:ConnectivityGateway .
+dp:IFTTT rdf:type owl:NamedIndividual ,
+dp:triggerActionPlateform ;
+dp:hasRule dp:Rule-001 ,
+dp:Rule-002 ,
+dp:Rule-003 .
+dp:Kitchen rdf:type owl:NamedIndividual ,
+core:FeatureOfInterest ;
+core:hasProperty dp:MotionKitchen ,
+dp:SmokeKitchen .
+dp:LightControlSystem rdf:type owl:NamedIndividual ,
+dp:IoTDevice ,
+dp:Processor ;
+dp:consumes dp:ChangeBrightness1 ,
+dp:ChangeBrightness2 ,
+dp:ConnectivityGateway ,
+dp:DetectPresence1 ,
+dp:DetectPresence2 ,
+dp:MeasureLight ,
+dp:SwitcLight1 ,
+dp:SwitchLight2 ;
+core:offers dp:ConrolsLight .
+dp:LightKitchen rdf:type owl:NamedIndividual ,
+core:Light .
+dp:LightRoom rdf:type owl:NamedIndividual ,
+core:Light .
+dp:LightSensor rdf:type owl:NamedIndividual ,
+dp:IoTDevice ,
+core:Sensor ;
+dp:consumes dp:ConnectivityGateway ;
+core:measuresProperty dp:LightRoom ;
+core:offers dp:MeasureLight .
+dp:MeasureLight rdf:type owl:NamedIndividual ,
+core:Service .
+dp:MeasureTemp rdf:type owl:NamedIndividual ,
+core:Service ;
+dp:allowsAction dp:getTemp .
+dp:MonitorSecurity rdf:type owl:NamedIndividual ,
+core:Service .
+dp:MotionKitchen rdf:type owl:NamedIndividual ,
+core:Motion .
+dp:MotionRoom rdf:type owl:NamedIndividual ,
+core:Motion ;
+core:hasState dp:isHere2 ,
+dp:isNotHere2 ;
+core:measuresProperty dp:MotionKitchen ;
+core:offers dp:DetectPresence2 .
+dp:MotionSensor1 rdf:type owl:NamedIndividual ,
+dp:IoTDevice ,
+core:Sensor ;
+dp:consumes dp:ConnectivityGateway ;
+core:hasState dp:isHere1 ,
+dp:isNotHere1 ;
+core:measuresProperty dp:MotionRoom ;
+core:offers dp:DetectPresence1 .
+dp:MotionSensor2 rdf:type owl:NamedIndividual ,
+dp:IoTDevice ,
+core:Sensor ;
+dp:consumes dp:ConnectvityWIFIRepeater ;
+core:hasState dp:isHere2 ,
+dp:isNotHere2 ;
+core:measuresProperty dp:MotionKitchen ;
+core:offers dp:DetectPresence2 .
+dp:NotAtHome rdf:type owl:NamedIndividual ,
+dp:Trigger .
+dp:OpenCloseDoor rdf:type owl:NamedIndividual ,
+core:Service ;
+dp:allowsAction dp:closedoor ,
+dp:opendoor .
+dp:OpenCloseWindow1 rdf:type owl:NamedIndividual ,
+core:Service ;
+dp:allowsAction dp:closewindow1 ,
+dp:openwindow1 .
+dp:OpenCloseWindow2 rdf:type owl:NamedIndividual ,
+core:Service ;
+dp:allowsAction dp:closewindow2 ,
+dp:openwindow2 .
+dp:OpenCloseWindow3 rdf:type owl:NamedIndividual ,
+core:Service ;
+dp:allowsAction dp:closewindow3 ,
+dp:openwindow3 .
+dp:Presence rdf:type owl:NamedIndividual ,
+dp:Trigger ;
+dp:relatedTo dp:isHere1 ,
+dp:isHere2 .
+dp:Room rdf:type owl:NamedIndividual ,
+core:FeatureOfInterest ;
+core:hasProperty dp:LightRoom ,
+dp:MotionRoom ,
+dp:TemperatureRoom .
+dp:Rule-001 rdf:type owl:NamedIndividual ,
+eupont:Rule ;
+eupont:hasAction dp:opendoor ,
+dp:openwindow1 ,
+dp:openwindow2 ,
+dp:openwindow3 ;
+eupont:hasTrigger dp:firealarm .
+dp:Rule-002 rdf:type owl:NamedIndividual ,
+eupont:Rule ;
+eupont:hasAction dp:openwindow1 ,
+dp:openwindow2 ,
+dp:openwindow3 ;
+eupont:hasTrigger dp:AC-Off .
+dp:Rule-003 rdf:type owl:NamedIndividual ,
+eupont:Rule ;
+eupont:hasAction dp:closedoor ,
+dp:closewindow1 ,
+dp:closewindow2 ,
+dp:closewindow3 ,
+dp:setColorBulb1Red ,
+dp:setColorBulb2Red ;
+eupont:hasTrigger dp:complexT .
+dp:Rule-004 rdf:type owl:NamedIndividual ,
+eupont:Rule ;
+eupont:hasAction dp:switchOffAC ;
+eupont:hasTrigger dp:NotAtHome .
+dp:SmarWindow1 rdf:type owl:NamedIndividual ,
+dp:IoTDevice ,
+core:Actuator ;
+dp:consumes dp:ConnectivityGateway ;
+core:offers dp:OpenCloseWindow1 .
+dp:SmartDoor rdf:type owl:NamedIndividual ,
+dp:IoTDevice ,
+core:Actuator ;
+dp:consumes dp:ConnectvityWIFIRepeater ;
+core:offers dp:OpenCloseDoor .
+dp:SmartLightBulb1 rdf:type owl:NamedIndividual ,
+dp:IoTDevice ,
+core:Actuator ;
+dp:changesProperty dp:LightRoom ;
+dp:consumes dp:ConnectivityGateway ;
+core:offers dp:ChangeBrightness1 ,
+dp:ChangeLightColor1 ,
+dp:SwitcLight1 .
+dp:SmartLightBulb2 rdf:type owl:NamedIndividual ,
+dp:IoTDevice ,
+core:Actuator ;
+dp:changesProperty dp:LightKitchen ;
+dp:consumes dp:ConnectvityWIFIRepeater ;
+core:offers dp:ChangeBrightness2 ,
+dp:ChangeLightColor2 ,
+dp:SwitchLight2 .
+dp:SmartPhone rdf:type owl:NamedIndividual ,
+dp:IoTDevice ,
+dp:Processor ;
+dp:consumes dp:AdjustTemp ,
+dp:ChangeBrightness1 ,
+dp:ChangeBrightness2 ,
+dp:ConnectivityGateway ,
+dp:ConnectvityWIFIRepeater ,
+dp:OpenCloseDoor ,
+dp:OpenCloseWindow1 ,
+dp:OpenCloseWindow2 ,
+dp:OpenCloseWindow3 ,
+dp:SwitcLight1 ,
+dp:SwitchLight2 .
+dp:SmartWindow2 rdf:type owl:NamedIndividual ,
+dp:IoTDevice ,
+core:Actuator ;
+dp:consumes dp:ConnectvityWIFIRepeater ;
+core:offers dp:OpenCloseWindow2 .
+dp:Smartwindow3 rdf:type owl:NamedIndividual ,
+dp:IoTDevice ,
+core:Actuator ;
+dp:consumes dp:ConnectivityGateway ,
+dp:ConnectvityWIFIRepeater ;
+core:offers dp:OpenCloseWindow3 .
+dp:SmokeKitchen rdf:type owl:NamedIndividual ,
+core:Smoke .
+dp:SmokeSensor rdf:type owl:NamedIndividual ,
+dp:IoTDevice ,
+core:Sensor ;
+dp:consumes dp:ConnectvityWIFIRepeater ;
+core:hasState dp:thereIsNotSmoke ,
+dp:thereIsSmoke ;
+core:measuresProperty dp:SmokeKitchen ;
+core:offers dp:DetectSmoke .
+dp:SwitcLight1 rdf:type owl:NamedIndividual ,
+core:Service .
+dp:SwitchLight2 rdf:type owl:NamedIndividual ,
+core:Service .
+dp:SwitchOnOffAC rdf:type owl:NamedIndividual ,
+core:Service ;
+dp:allowsAction dp:switchOffAC .
+dp:Temp rdf:type owl:NamedIndividual ,
+dp:Application ;
+eupont:hasAction dp:adjustTemp ,
+dp:getTemp ;
+dp:hasRule dp:Rule-004 .
+dp:TempSensor rdf:type owl:NamedIndividual ,
+dp:IoTDevice ,
+core:Sensor ;
+dp:consumes dp:ConnectivityGateway ;
+core:measuresProperty dp:TemperatureRoom ;
+core:offers dp:MeasureTemp .
+dp:TemperatureRoom rdf:type owl:NamedIndividual ,
+core:Temperature .
+dp:WifiRepeater rdf:type owl:NamedIndividual ,
+dp:ConnectivityDevice ,
+core:Device ;
+dp:consumes dp:ConnectivityGateway ;
+core:offers dp:ConnectvityWIFIRepeater .
+dp:adjustTemp rdf:type owl:NamedIndividual ,
+dp:Action .
+dp:closedoor rdf:type owl:NamedIndividual ,
+dp:Action .
+dp:closewindow1 rdf:type owl:NamedIndividual ,
+dp:Action .
+dp:closewindow2 rdf:type owl:NamedIndividual ,
+ dp:Action .
+ dp:closewindow3 rdf:type owl:NamedIndividual ,
+dp:Action .
+dp:complexT rdf:type owl:NamedIndividual ,
+dp:ComplexTrigger ;
+dp:hasChildTrigger dp:NotAtHome ,
+dp:Presence .
+dp:fireAlarm rdf:type owl:NamedIndividual ,
+core:State .
+dp:firealarm rdf:type owl:NamedIndividual ,
+dp:Trigger ;
+dp:relatedTo dp:fireAlarm .
+dp:getTemp rdf:type owl:NamedIndividual ,
+dp:Action .
+dp:isHere1 rdf:type owl:NamedIndividual ,
+core:State .
+dp:isHere2 rdf:type owl:NamedIndividual ,
+core:State .
+dp:isNotHere1 rdf:type owl:NamedIndividual ,
+core:State .
+dp:isNotHere2 rdf:type owl:NamedIndividual ,
+core:State .
+dp:opendoor rdf:type owl:NamedIndividual ,
+dp:Action ;
+dp:allowsAction dp:adjustTemp .
+dp:openwindow1 rdf:type owl:NamedIndividual ,
+dp:Action .
+dp:openwindow2 rdf:type owl:NamedIndividual ,
+dp:Action .
+dp:openwindow3 rdf:type owl:NamedIndividual ,
+dp:Action .
+ dp:securityAlarm rdf:type owl:NamedIndividual ,
+core:State .
+dp:setColorBulb1Red rdf:type owl:NamedIndividual ,
+dp:Action .
+dp:setColorBulb2Red rdf:type owl:NamedIndividual ,
+dp:Action .
+dp:switchOffAC rdf:type owl:NamedIndividual ,
+dp:Action .
+dp:temp rdf:type owl:NamedIndividual ,
+dk:DataFlow ;
+dk:flowsFrom dp:getTemp ;
+dk:flowsTo dp:adjustTemp .
+dp:thereIsNotSmoke rdf:type owl:NamedIndividual ,
+core:State .
+dp:thereIsSmoke rdf:type owl:NamedIndividual ,
+core:State .
+dp:vocalAssistant rdf:type owl:NamedIndividual ,
+dp:IoTDevice ,
+dp:Processor ;
+dp:consumes dp:AdjustTemp ,
+dp:ChangeBrightness1 ,
+dp:ChangeBrightness2 ,
+dp:ConnectivityGateway ,
+dp:OpenCloseDoor ,
+dp:OpenCloseWindow1 ,
+dp:OpenCloseWindow2 ,
+dp:OpenCloseWindow3 ,
+dp:SwitcLight1 ,
+dp:SwitchLight2 ,
+dp:SwitchOnOffAC .
+dp:AC-Off1 rdf:type owl:NamedIndividual ,
+dp:Trigger ;
+dp:relatedTo dp:ACoff1 .
+dp:ACOn1 rdf:type owl:NamedIndividual ,
+core:OnState .
+dp:ACoff1 rdf:type owl:NamedIndividual ,
+core:OffState .
+dp:AdjustTemp1 rdf:type owl:NamedIndividual ,
+core:Service ;
+dp:allowsAction dp:adjustTemp1 .
+dp:AirConditionner1 rdf:type owl:NamedIndividual ,
+dp:IoTDevice ,
+core:Actuator ,
+core:Device ;
+dp:changesProperty dp:TemperatureRoom1 ;
+dp:consumes dp:ConnectivityGateway1 ;
+core:hasState dp:ACOn1 ,
+dp:ACoff1 ;
+core:offers dp:AdjustTemp1 ,
+dp:SwitchOnOffAC1 .
+dp:Alarm1 rdf:type owl:NamedIndividual ,
+dp:IoTDevice ,
+dp:Processor ;
+dp:consumes dp:ConnectvityWIFIRepeater1 ,
+dp:DetectSmoke1 ,
+dp:MeasureTemp1 ;
+core:hasState dp:fireAlarm1 ,
+dp:securityAlarm1 ;
+core:offers dp:MonitorSecurity1 .
+dp:ChangeBrightness11 rdf:type owl:NamedIndividual ,
+core:Service .
+dp:ChangeBrightness21 rdf:type owl:NamedIndividual ,
+core:Service .
+dp:ChangeLightColor11 rdf:type owl:NamedIndividual ,
+core:Service ;
+dp:allowsAction dp:setColorBulb1Red1 .
+dp:ChangeLightColor21 rdf:type owl:NamedIndividual ,
+core:Service ;
+dp:allowsAction dp:setColorBulb2Red1 .
+dp:ConnectivityGateway1 rdf:type owl:NamedIndividual ,
+dp:ConnectivityService .
+dp:ConnectvityWIFIRepeater1 rdf:type owl:NamedIndividual ,
+dp:ConnectivityService .
+dp:ConrolsLight1 rdf:type owl:NamedIndividual ,
+core:Service .
+dp:DetectPresence11 rdf:type owl:NamedIndividual ,
+core:Service .
+dp:DetectPresence21 rdf:type owl:NamedIndividual ,
+core:Service .
+dp:DetectSmoke1 rdf:type owl:NamedIndividual ,
+core:Service .
+dp:Gateway1 rdf:type owl:NamedIndividual ,
+dp:ConnectivityDevice ,
+core:Device ;
+core:offers dp:ConnectivityGateway1 .
+dp:IFTTT1 rdf:type owl:NamedIndividual ,
+dp:triggerActionPlateform ;
+dp:hasRule dp:Rule-0011 ,
+dp:Rule-0021 ,
+dp:Rule-0031 .
+dp:Kitchen1 rdf:type owl:NamedIndividual ,
+core:FeatureOfInterest ;
+core:hasProperty dp:MotionKitchen1 ,
+dp:SmokeKitchen1 .
+dp:LightControlSystem1 rdf:type owl:NamedIndividual ,
+dp:IoTDevice ,
+dp:Processor ;
+dp:consumes dp:ChangeBrightness11 ,
+dp:ChangeBrightness21 ,
+dp:ConnectivityGateway1 ,
+dp:DetectPresence11 ,
+dp:DetectPresence21 ,
+dp:MeasureLight1 ,
+dp:SwitcLight11 ,
+dp:SwitchLight21 ;
+core:offers dp:ConrolsLight1 .
+dp:LightKitchen1 rdf:type owl:NamedIndividual ,
+core:Light .
+dp:LightRoom1 rdf:type owl:NamedIndividual ,
+core:Light .
+dp:LightSensor1 rdf:type owl:NamedIndividual ,
+dp:IoTDevice ,
+core:Sensor ;
+dp:consumes dp:ConnectivityGateway1 ;
+core:measuresProperty dp:LightRoom1 ;
+core:offers dp:MeasureLight1 .
+dp:MeasureLight1 rdf:type owl:NamedIndividual ,
+core:Service .
+dp:MeasureTemp1 rdf:type owl:NamedIndividual ,
+core:Service ;
+dp:allowsAction dp:getTemp1 .
+dp:MonitorSecurity1 rdf:type owl:NamedIndividual ,
+core:Service .
+dp:MotionKitchen1 rdf:type owl:NamedIndividual ,
+core:Motion .
+dp:MotionRoom1 rdf:type owl:NamedIndividual ,
+core:Motion ;
+core:hasState dp:isHere21 ,
+dp:isNotHere21 ;
+core:measuresProperty dp:MotionKitchen1 ;
+core:offers dp:DetectPresence21 .
+dp:MotionSensor11 rdf:type owl:NamedIndividual ,
+dp:IoTDevice ,
+core:Sensor ;
+dp:consumes dp:ConnectivityGateway1 ;
+core:hasState dp:isHere11 ,
+dp:isNotHere11 ;
+core:measuresProperty dp:MotionRoom1 ;
+core:offers dp:DetectPresence11 .
+dp:MotionSensor21 rdf:type owl:NamedIndividual ,
+dp:IoTDevice ,
+core:Sensor ;
+dp:consumes dp:ConnectvityWIFIRepeater1 ;
+core:hasState dp:isHere21 ,
+dp:isNotHere21 ;
+core:measuresProperty dp:MotionKitchen1 ;
+core:offers dp:DetectPresence21 .
+dp:NotAtHome1 rdf:type owl:NamedIndividual ,
+dp:Trigger .
+dp:OpenCloseDoor1 rdf:type owl:NamedIndividual ,
+core:Service ;
+dp:allowsAction dp:closedoor1 ,
+dp:opendoor1 .
+dp:OpenCloseWindow11 rdf:type owl:NamedIndividual ,
+core:Service ;
+dp:allowsAction dp:closewindow11 ,
+dp:openwindow11 .
+dp:OpenCloseWindow21 rdf:type owl:NamedIndividual ,
+core:Service ;
+dp:allowsAction dp:closewindow21 ,
+dp:openwindow21 .
+dp:OpenCloseWindow31 rdf:type owl:NamedIndividual ,
+core:Service ;
+dp:allowsAction dp:closewindow31 ,
+dp:openwindow31 .
+dp:Presence1 rdf:type owl:NamedIndividual ,
+dp:Trigger ;
+dp:relatedTo dp:isHere11 ,
+dp:isHere21 .
+dp:Room1 rdf:type owl:NamedIndividual ,
+core:FeatureOfInterest ;
+core:hasProperty dp:LightRoom1 ,
+dp:MotionRoom1 ,
+dp:TemperatureRoom1 .
+dp:Rule-0011 rdf:type owl:NamedIndividual ,
+eupont:Rule ;
+eupont:hasAction dp:opendoor1 ,
+dp:openwindow11 ,
+dp:openwindow21 ,
+dp:openwindow31 ;
+eupont:hasTrigger dp:firealarm1 .
+dp:Rule-0021 rdf:type owl:NamedIndividual ,
+eupont:Rule ;
+eupont:hasAction dp:openwindow11 ,
+dp:openwindow21 ,
+dp:openwindow31 ;
+eupont:hasTrigger dp:AC-Off1 .
+dp:Rule-0031 rdf:type owl:NamedIndividual ,
+eupont:Rule ;
+eupont:hasAction dp:closedoor1 ,
+dp:closewindow11 ,
+dp:closewindow21 ,
+dp:closewindow31 ,
+dp:setColorBulb1Red1 ,
+dp:setColorBulb2Red1 ;
+eupont:hasTrigger dp:complexT1 .
+dp:Rule-0041 rdf:type owl:NamedIndividual ,
+eupont:Rule ;
+eupont:hasAction dp:switchOffAC1 ;
+eupont:hasTrigger dp:NotAtHome1 .
+dp:SmarWindow11 rdf:type owl:NamedIndividual ,
+dp:IoTDevice ,
+core:Actuator ;
+dp:consumes dp:ConnectivityGateway1 ;
+core:offers dp:OpenCloseWindow11 .
+dp:SmartDoor1 rdf:type owl:NamedIndividual ,
+dp:IoTDevice ,
+core:Actuator ;
+dp:consumes dp:ConnectvityWIFIRepeater1 ;
+core:offers dp:OpenCloseDoor1 .
+dp:SmartLightBulb11 rdf:type owl:NamedIndividual ,
+dp:IoTDevice ,
+core:Actuator ;
+dp:changesProperty dp:LightRoom1 ;
+dp:consumes dp:ConnectivityGateway1 ;
+core:offers dp:ChangeBrightness11 ,
+dp:ChangeLightColor11 ,
+dp:SwitcLight11 .
+dp:SmartLightBulb21 rdf:type owl:NamedIndividual ,
+dp:IoTDevice ,
+core:Actuator ;
+dp:changesProperty dp:LightKitchen1 ;
+dp:consumes dp:ConnectvityWIFIRepeater1 ;
+core:offers dp:ChangeBrightness21 ,
+dp:ChangeLightColor21 ,
+dp:SwitchLight21 .
+dp:SmartPhone1 rdf:type owl:NamedIndividual ,
+dp:IoTDevice ,
+dp:Processor ;
+dp:consumes dp:AdjustTemp1 ,
+dp:ChangeBrightness11 ,
+dp:ChangeBrightness21 ,
+dp:ConnectivityGateway1 ,
+dp:ConnectvityWIFIRepeater1 ,
+dp:OpenCloseDoor1 ,
+dp:OpenCloseWindow11 ,
+dp:OpenCloseWindow21 ,
+dp:OpenCloseWindow31 ,
+dp:SwitcLight11 ,
+dp:SwitchLight21 .
+dp:SmartWindow21 rdf:type owl:NamedIndividual ,
+dp:IoTDevice ,
+core:Actuator ;
+dp:consumes dp:ConnectvityWIFIRepeater1 ;
+core:offers dp:OpenCloseWindow21 .
+dp:Smartwindow31 rdf:type owl:NamedIndividual ,
+dp:IoTDevice ,
+core:Actuator ;
+dp:consumes dp:ConnectivityGateway1 ,
+dp:ConnectvityWIFIRepeater1 ;
+core:offers dp:OpenCloseWindow31 .
+dp:SmokeKitchen1 rdf:type owl:NamedIndividual ,
+core:Smoke .
+dp:SmokeSensor1 rdf:type owl:NamedIndividual ,
+dp:IoTDevice ,
+core:Sensor ;
+dp:consumes dp:ConnectvityWIFIRepeater1 ;
+core:hasState dp:thereIsNotSmoke1 ,
+dp:thereIsSmoke1 ;
+core:measuresProperty dp:SmokeKitchen1 ;
+core:offers dp:DetectSmoke1 .
+dp:SwitcLight11 rdf:type owl:NamedIndividual ,
+core:Service .
+dp:SwitchLight21 rdf:type owl:NamedIndividual ,
+core:Service .
+dp:SwitchOnOffAC1 rdf:type owl:NamedIndividual ,
+core:Service ;
+dp:allowsAction dp:switchOffAC1 .
+dp:Temp rdf:type owl:NamedIndividual ,
+dp:Application ;
+eupont:hasAction dp:adjustTemp1 ,
+dp:getTemp1 ;
+dp:hasRule dp:Rule-0041 .
+dp:TempSensor1 rdf:type owl:NamedIndividual ,
+dp:IoTDevice ,
+core:Sensor ;
+dp:consumes dp:ConnectivityGateway1 ;
+core:measuresProperty dp:TemperatureRoom1 ;
+core:offers dp:MeasureTemp1 .
+dp:TemperatureRoom1 rdf:type owl:NamedIndividual ,
+core:Temperature .
+dp:WifiRepeater1 rdf:type owl:NamedIndividual ,
+dp:ConnectivityDevice ,
+core:Device ;
+dp:consumes dp:ConnectivityGateway1 ;
+core:offers dp:ConnectvityWIFIRepeater1 .
+dp:adjustTemp1 rdf:type owl:NamedIndividual ,
+dp:Action .
+dp:closedoor1 rdf:type owl:NamedIndividual ,
+dp:Action .
+dp:closewindow11 rdf:type owl:NamedIndividual ,
+dp:Action .
+dp:closewindow21 rdf:type owl:NamedIndividual ,
+ dp:Action .
+ dp:closewindow31 rdf:type owl:NamedIndividual ,
+dp:Action .
+dp:complexT1 rdf:type owl:NamedIndividual ,
+dp:ComplexTrigger ;
+dp:hasChildTrigger dp:NotAtHome1 ,
+dp:Presence1 .
+dp:fireAlarm1 rdf:type owl:NamedIndividual ,
+core:State .
+dp:firealarm1 rdf:type owl:NamedIndividual ,
+dp:Trigger ;
+dp:relatedTo dp:fireAlarm1 .
+dp:getTemp1 rdf:type owl:NamedIndividual ,
+dp:Action .
+dp:isHere11 rdf:type owl:NamedIndividual ,
+core:State .
+dp:isHere21 rdf:type owl:NamedIndividual ,
+core:State .
+dp:isNotHere11 rdf:type owl:NamedIndividual ,
+core:State .
+dp:isNotHere21 rdf:type owl:NamedIndividual ,
+core:State .
+dp:opendoor1 rdf:type owl:NamedIndividual ,
+dp:Action ;
+dp:allowsAction dp:adjustTemp1 .
+dp:openwindow11 rdf:type owl:NamedIndividual ,
+dp:Action .
+dp:openwindow21 rdf:type owl:NamedIndividual ,
+dp:Action .
+dp:openwindow31 rdf:type owl:NamedIndividual ,
+dp:Action .
+ dp:securityAlarm1 rdf:type owl:NamedIndividual ,
+core:State .
+dp:setColorBulb1Red1 rdf:type owl:NamedIndividual ,
+dp:Action .
+dp:setColorBulb2Red1 rdf:type owl:NamedIndividual ,
+dp:Action .
+dp:switchOffAC1 rdf:type owl:NamedIndividual ,
+dp:Action .
+dp:temp1 rdf:type owl:NamedIndividual ,
+dk:DataFlow ;
+dk:flowsFrom dp:getTemp1 ;
+dk:flowsTo dp:adjustTemp1 .
+dp:thereIsNotSmoke1 rdf:type owl:NamedIndividual ,
+core:State .
+dp:thereIsSmoke1 rdf:type owl:NamedIndividual ,
+core:State .
+dp:vocalAssistant1 rdf:type owl:NamedIndividual ,
+dp:IoTDevice ,
+dp:Processor ;
+dp:consumes dp:AdjustTemp1 ,
+dp:ChangeBrightness11 ,
+dp:ChangeBrightness21 ,
+dp:ConnectivityGateway1 ,
+dp:OpenCloseDoor1 ,
+dp:OpenCloseWindow11 ,
+dp:OpenCloseWindow21 ,
+dp:OpenCloseWindow31 ,
+dp:SwitcLight11 ,
+dp:SwitchLight21 ,
+dp:SwitchOnOffAC1 .
