@@ -24,7 +24,7 @@ public class ERDependenciesInferenceTests {
 
         //choose data set from Datasets directory [868, 1736, 2604, 4340] unit: number of triples
 
-        shacl.setDataSet("868");
+        shacl.setDataSet("4340");
         shacl.executeERDep();
 
 

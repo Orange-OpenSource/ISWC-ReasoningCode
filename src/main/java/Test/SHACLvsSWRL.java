@@ -14,8 +14,6 @@
 package Test;
 
 import Inference.*;
-import org.apache.kafka.common.protocol.types.Field;
-
 public class SHACLvsSWRL {
 
     public static void main(final String[] args)  {
@@ -24,24 +22,15 @@ public class SHACLvsSWRL {
          long startTime,endTime,duration;
         System.out.println("--------------------------------------------------");
 
+        /*NB:
+
+        // run one reasoning call (shacl or swrl) in an execution not both! because java class charging is done in the first call
+        // i.e when running swrl comment shacl and one running shacl comment swrl !
+
+        */
+
         //choose data set from Datasets directory [50, 100, 200, 1000 ,2000 ,5000] unit: number of dependencies
         String dataSets="5000";
-
-        /*shacl*/
-            shacl.setDataSet(dataSets);
-            startTime = System.nanoTime();
-             shacl.loadData();
-             endTime = System.nanoTime();
-             duration = (endTime - startTime);
-             startTime = System.nanoTime();
-             shacl.infer();
-             endTime = System.nanoTime();
-        System.out.println("Shacl data load Time: " + duration / 1000000 + "  ms");
-
-        duration = (endTime - startTime);
-                System.out.println("Shacl inference Time: " + duration / 1000000 + "  ms");
-
-
 
 
         /*owl api openllet swrl*/
@@ -56,6 +45,21 @@ public class SHACLvsSWRL {
         System.out.println("owl api openllet data load Time: " + duration / 1000000 + "  ms");
         duration = (endTime - startTime);
         System.out.println(" owl api openllet  inference Time: " + duration / 1000000 + "  ms");
+
+
+        /*shacl*/
+        shacl.setDataSet(dataSets);
+        startTime = System.nanoTime();
+        shacl.loadData();
+        endTime = System.nanoTime();
+        duration = (endTime - startTime);
+        startTime = System.nanoTime();
+        shacl.infer();
+        endTime = System.nanoTime();
+        System.out.println("Shacl data load Time: " + duration / 1000000 + "  ms");
+
+        duration = (endTime - startTime);
+        System.out.println("Shacl inference Time: " + duration / 1000000 + "  ms");
 
 
 
