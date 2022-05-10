@@ -7,7 +7,7 @@ This code implements a semantic-based approach to infer IoT dependencies between
 This project is build as any JAVA project (JAVA 11), dependencies are managed by Maven.
 
 ## Evaluation Results
-[Numerical Evaluation results presented in the qualtitative evaluation ](https://github.com/Orange-OpenSource/ISWC-ReasoningCode/blob/master/EvaluationResults.xlsx)
+[Numerical Evaluation results presented in the quantitative evaluation ](https://github.com/Orange-OpenSource/ISWC-ReasoningCode/blob/master/EvaluationResults.xlsx)
 ## License
  
  
